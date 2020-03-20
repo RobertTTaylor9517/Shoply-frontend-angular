@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="header-image">
+    <h1>Welcome To Shoply</h1>
+</div>
+<div class="ui grid">
+    <div class="row">
+        <div class="four wide column"></div>
+        <div class="twelve wide column">
+            <ul *ngIf="products">
+                <li *ngFor="let product of products">
+                    <img src={{product.img}}/>
+                    <p>{{product.name}}</p>
+                    <p>{{product.description}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

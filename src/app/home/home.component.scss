@@ -1,0 +1,16 @@
+img {
+    height: 100px;
+    width: 100px;
+}
+
+.header-image {
+    background-image: url(https://www.brandlabs.us/wp-content/uploads/2016/12/blog-header-mobile-marketing.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 300px;
+    width: 100vw;
+    height: 300px;
+
+    h1 {
+        left: 50%;
+    }
+}
