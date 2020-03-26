@@ -7,7 +7,7 @@
         <div class="twelve wide column">
             <ul *ngIf="products">
                 <li *ngFor="let product of products">
-                    <img src={{product.img}}/>
+                    <img src={{product.img}} [routerLink]="['/product/', product.id]"/>
                     <p>{{product.name}}</p>
                     <p>{{product.description}}</p>
                 </li>
