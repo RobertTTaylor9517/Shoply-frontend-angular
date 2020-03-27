@@ -17,4 +17,5 @@ export class HttpService {
   getProduct(id){
     return this.http.get(`${this.rootLink}products/${id}`)
   }
+
 }

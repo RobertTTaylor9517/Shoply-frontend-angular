@@ -9,7 +9,7 @@
         </div>
         <div class="item">
           <!-- <div class="ui button">Cart ({{cart.length}})</div> -->
-          <div class="ui labeled icon dropdown button" suiDropdown>
+          <div class="ui labeled icon dropdown button" suiDropdown autoClose="outsideClick">
             <i class="cart arrow down icon"></i>
             <span class="text">Cart ({{getCount()}})</span>
             <div class="menu" suiDropdownMenu>
@@ -25,8 +25,8 @@
                         <img class="cart-image" src={{item.img}}>
                         <span class="text" [routerLink]="['/product/', item.id]">{{item.name}}</span>
                         <div class="cart-button">
-                            <button class="mini ui button">Delete Item</button>
-                            <span class="text">Quantity: {{item.quantity}}</span>
+                            <button class="mini ui button" (click)="removeFromCart(item)">Delete Item</button>
+                            <span class="text"><i class='angle left icon' (click)="changeQuantity(item, 'minus')"></i> Quantity: {{item.quantity}} <i class="angle right icon" (click)="changeQuantity(item, 'add')"></i></span>
                         </div>
                     </div>
                 </ng-container>

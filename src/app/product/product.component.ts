@@ -8,7 +8,7 @@ import { HttpService } from '../http.service'
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  product: Object;
+  product;
 
   constructor(private route: ActivatedRoute, private _http: HttpService) {
     this._http.getProduct(this.route.snapshot.params.productId).subscribe(data => {

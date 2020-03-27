@@ -6,7 +6,9 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartService {
 
-  cart = []
+  private _cart = new BehaviorSubject<any>([]);
+  private cart = []
+  sentCart = this._cart.asObservable();
 
   constructor() { }
 
@@ -14,24 +16,33 @@ export class CartService {
     if(this.cart.some(e => e.name === product.name)){
       let i = this.cart.indexOf(product)
       this.cart[i].quantity += 1
+      this._cart.next(this.cart)
+      console.log("updated cart")
     }else{
       product["quantity"] = 1
       this.cart.push(product)
+      this._cart.next(this.cart)
+      console.log("added to cart")
     }
   }
-  getCart(){
-    console.log("getting cart")
-    return this.cart
+
+  changeQuantity(item, work){
+    let i = this.cart.indexOf(item)
+    if(work === 'add'){
+      this.cart[i].quantity += 1;
+      this._cart.next(this.cart)
+    }else if(this.cart[i].quantity > 1){
+      this.cart[i].quantity -= 1;
+      this._cart.next(this.cart)
+    }
   }
 
-  // getCount(){
-  //   console.log("count method")
-    
-  //   this.countValue = this.cart.reduce((total, current) =>{
-  //     return total + current.quantity
-  //   }, 0);
-  //   this.count.next(this.countValue);
-  // }
+  removeFromCart(item){
+    let newCart = this.cart.filter(cartItem => cartItem !== item )
+    console.log(newCart)
+    this.cart = newCart
+    this._cart.next(this.cart)
+  }
 
   clearCart(){
     this.cart = []
