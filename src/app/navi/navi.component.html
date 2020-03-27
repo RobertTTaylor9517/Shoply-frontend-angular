@@ -1,0 +1,48 @@
+<div class='ui yellow inverted menu'>
+    <div class="header item" [routerLink]="['/']">Shoply</div>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui primary button">Signup</div>
+        </div>
+        <div class="item">
+          <div class="ui button" routerLink="/login">Login</div>
+        </div>
+        <div class="item">
+          <!-- <div class="ui button">Cart ({{cart.length}})</div> -->
+          <div class="ui labeled icon dropdown button" suiDropdown>
+            <i class="cart arrow down icon"></i>
+            <span class="text">Cart ({{getCount()}})</span>
+            <div class="menu" suiDropdownMenu>
+                <ng-container *ngIf="cart.length === 0;else cartBlock">
+                    <div class="item">
+                        <span class="text">Your Cart is Empty...</span>
+                    </div>
+                </ng-container>
+            </div>
+            <ng-template  #cartBlock>
+                <ng-container *ngFor="let item of cart">
+                    <div class="item">
+                        <img class="cart-image" src={{item.img}}>
+                        <span class="text" [routerLink]="['/product/', item.id]">{{item.name}}</span>
+                        <div class="cart-button">
+                            <button class="mini ui button">Delete Item</button>
+                            <span class="text">Quantity: {{item.quantity}}</span>
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="item">
+                    <div class="text">Total: ${{getTotal()}}</div>
+                </div>
+            </ng-template>
+          </div>
+          <!-- <button class="ui labeled icon button">
+            <i class="cart arrow down icon"></i>
+            Cart ({{cart.length}})
+          </button>
+          <div class="menu">
+            <div class="item" *ngFor="let item of cart">
+                <img src={{item.img}} />
+            </div> -->
+        </div>
+      </div>
+  </div>
