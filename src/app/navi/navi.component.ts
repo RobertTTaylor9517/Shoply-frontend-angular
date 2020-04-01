@@ -11,12 +11,11 @@ export class NaviComponent implements OnInit {
 
   cart = [];
   cartSubscriber: Subscription;
-  counter;
 
   constructor(private cartService: CartService){}
 
   ngOnInit(){
-    this.cartService.sentCart.subscribe(value => {
+    this.cartSubscriber = this.cartService.sentCart.subscribe(value => {
       this.cart = value;
     })
   }
@@ -32,11 +31,8 @@ export class NaviComponent implements OnInit {
   }
 
   removeFromCart(item){
-    // let newCart = this.cart.filter(cartItem => cartItem !== item )
-    // // console.log(newCart)
-    // this.cart = newCart
     this.cartService.removeFromCart(item)
-    console.log(this.cart)
+    // console.log(this.cart)
   }
 
   getTotal(){

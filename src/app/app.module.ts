@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component';
 import { NaviComponent } from './navi/navi.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NaviComponent } from './navi/navi.component';
     LoginComponent,
     ProductComponent,
     NaviComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

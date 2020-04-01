@@ -1,3 +1,39 @@
-<div *ngIf="product != null">
-    <p>{{product.name}}</p>
-</div>
+<ng-container *ngIf="product != null" >
+    <div class="ui vertically divided grid">
+        <div class="row">
+            <div class="spacer">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="eight wide column">
+                <img class="padded" src={{product.img}} />
+            </div>
+            <div class="four wide column">
+                <div class="padded">
+                  <h3>{{product.name}}</h3>
+                  <p>Rating: <sui-rating class="star" [ngModel]="3" [maximum]="5" [isReadonly]="true"></sui-rating></p>
+                  <div class="ui divider"></div>
+                  <h3>Price: ${{product.price}}.00</h3>
+                    
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui compact center aligned segment">
+                    <h4> Add the Item To Your Cart!</h4>
+                    <div class="ui button" (click)="addToCart(product)">Add To Cart</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="padded">
+                <h3>Product Description: </h3>
+                <p>{{product.description}}</p>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+</ng-container>
+
