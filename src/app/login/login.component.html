@@ -1,5 +1,20 @@
-<div class="ui input">
+<!-- <div class="ui input">
     <input type="text" placeholder="Enter Username..." [(ngModel)]="username">
     <br>
     <input type="text" placeholder="Enter Password" [(ngModel)]="password">
+    <br>
+    <button type="submit"></button>
+</div> -->
+<div>
+    <form class="ui form">
+        <div class="field">
+            <label>Username:</label>
+            <input type="text" placeholder="Enter Username..." [(ngModel)]="username" name="username">
+        </div>
+        <div class="field">
+            <label>Password:</label>
+            <input type="text" placeholder="Enter Password" [(ngModel)]="password" name="password">
+        </div>
+        <button (click)="handleSubmit()" class="ui button" type="Submit">Submit</button>
+    </form>
 </div>

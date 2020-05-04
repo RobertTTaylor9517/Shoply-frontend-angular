@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   username: string = '';
-  password: string = '';
+  password: string='';
+  wallet: number = 0;
 
   constructor(private _http: HttpService) { }
 
@@ -17,8 +18,10 @@ export class LoginComponent implements OnInit {
   }
 
   handleSubmit(){
-    this._http.loginUser(this.username, this.password).subscribe((data: any)=>{
+    this._http.signupUser(this.username, this.password, this.wallet).subscribe((data: any) =>{
+      
       console.log(data)
+      
       localStorage.setItem("token", data['token']);
       localStorage.setItem("user_id", data['user_id']);
     })
